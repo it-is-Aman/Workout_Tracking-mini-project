@@ -1,0 +1,3 @@
+Workout Name                   Reps       Sets       Time (min)
+Real delt single arm           12         3          4.00      
+bench press                    14         12         5.00      
