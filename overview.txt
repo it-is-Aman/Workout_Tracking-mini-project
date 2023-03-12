@@ -1,0 +1,9 @@
+unformed_tracking_workout  ->  unstructured and without any formatting
+
+P_with_function ->  mini project with function and have different string functions generated from ChatGPT
+
+fullOverview_Tracking_workout  ->  completed with having comments and different code lines
+
+Finallized_Tracking_Workout  ->  fully finished mini project
+
+session 4 and 5 -> Lab work
