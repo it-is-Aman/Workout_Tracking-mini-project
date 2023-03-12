@@ -1,3 +1,0 @@
-Workout Name                   Reps       Sets       Time (min)
-asd
-                           2          2          2.00      

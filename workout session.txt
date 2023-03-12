@@ -1,0 +1,3 @@
+Workout Name                   Reps       Sets       Time (min)
+bench press                    12         3          3.00      
+Leg raises                     21         3          7.00      

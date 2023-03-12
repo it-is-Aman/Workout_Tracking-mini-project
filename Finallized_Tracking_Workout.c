@@ -3,18 +3,18 @@
 #include <string.h>
 
 typedef struct {
-    char name[50];
+    char name[30];
     int reps;
     int sets;
     float time;
 }workout;
 
-void add_workout(workout workouts[], int *num_workouts) {   //*num_workouts beacuse it have address of num_workout comming from case 1
-    printf("\nEnter the name of the workout: ");
-    getchar();  // Consume newline character
-    fgets(workouts[*num_workouts].name, 50, stdin); //fgets() -> read input from stdin (standard input) and store it in "workouts[*num_workouts].name"
-                                                    // scanf("%s",&workouts[num_workouts].name);
-    
+                                                                                                   
+void add_workout(workout workouts[], int *num_workouts) {                                          
+    printf("\nEnter the name of the workout (without space) : ");
+    getchar();  //The function waits until a character is entered by the user                                                                                     
+    gets(workouts[*num_workouts].name);                                                            
+
     printf("Enter the number of reps: ");
     scanf("%d", &workouts[*num_workouts].reps);
     printf("Enter the number of sets: ");
@@ -22,19 +22,24 @@ void add_workout(workout workouts[], int *num_workouts) {   //*num_workouts beac
     printf("Enter the time taken (in minutes): ");
     scanf("%f", &workouts[*num_workouts].time);
     (*num_workouts)++;
-    }
-
-void view_workouts(workout workouts[], int num_workouts) {
-    printf("\nWorkout sistory:\n");
-    printf("%-30s %s %s %s\n", "Workout Name", "Reps", "Sets", "Time (min)");   //%-30s prints the string which will be 30 characters wide
-    for (int i = 0; i < num_workouts; i++) {
-        printf("%-30s %d %d %.2f\n", workouts[i].name, workouts[i].reps, workouts[i].sets, workouts[i].time);
 }
 
+void view_workouts(workout workouts[], int num_workouts) {
+    printf("\nWorkout history:\n");
+    printf("%-30s %-10s %-10s %-10s\n", "Workout Name", "Reps", "Sets", "Time (min)");  //%-30s left-align the string value within a 30 characters width            
+    for (int i = 0; i < num_workouts; i++) {
+        printf("%-30s %-10d %-10d %-10.2f\n", workouts[i].name, workouts[i].reps, workouts[i].sets, workouts[i].time);
+    }
 }
 
 void export_workouts(workout workouts[], int num_workouts) {
-    FILE *file = fopen("Workout_session.txt", "w");
+    char file_name[50];
+
+    printf("\nEnter the name of the file to export to (including .txt extension): ");
+    getchar();
+    gets(file_name);
+
+    FILE *file = fopen(file_name, "w");
     if (file == NULL) {
         printf("Error: Could not open file for writing.\n");
         return;
@@ -46,7 +51,7 @@ void export_workouts(workout workouts[], int num_workouts) {
     }
 
     fclose(file);
-    printf("Workouts exported successfully with name Workout_session.txt.\n");
+    printf("Workouts exported successfully with name %s\n", file_name);
 }
 
 int main() {
@@ -65,7 +70,7 @@ int main() {
 
         switch (menu_choice) {
             case 1:
-                add_workout(workouts, &num_workouts);   //we pass address of num_workouts
+                add_workout(workouts, &num_workouts);   
                 break;
             case 2:
                 view_workouts(workouts, num_workouts);
